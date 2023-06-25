@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title size="small">Pré visualização</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fecharModal()">Cancelar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-avatar style="margin: auto; width: 150px; height: 150px">
+    <ion-img src="{{imgPreview}}"></ion-img>
+  </ion-avatar>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="salvar()">Salvar foto</ion-button>
+    
+      <ion-button (click)="editarFoto()">Editar foto</ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

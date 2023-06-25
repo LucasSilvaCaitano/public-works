@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+          <ion-button routerLink="/tabs/denuncia" routerDirection="forward">
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Fazer Denuncia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    
+  <ion-row>
+    <ion-col>
+      <ion-item lines="inset">
+        <ion-label position="floating">
+          Irregularidade
+        </ion-label>
+        <ion-select [(ngModel)]="irregularidade" multiple>
+          <ion-select-option *ngFor="let irregularidade of irregularidades" value="{{irregularidade.idIrregularidade}}">
+            {{irregularidade.descricaoIrregularidade}}
+          </ion-select-option>
+        </ion-select>
+     
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+        <ion-item>
+            <ion-label position="floating">Descrição</ion-label>
+            <ion-textarea rows="6" cols="20" [(ngModel)]="descricao"></ion-textarea>
+          </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label (click)="abrirModalAddFoto()">
+            Adicionar Fotos
+          </ion-label>
+          <ion-icon class="icone_camera" slot="start" name="camera"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+<div class="centro">
+    <ion-button (click)="fazerDenuncia()">Fazer Denuncia</ion-button>
+  </div>
+</ion-content>

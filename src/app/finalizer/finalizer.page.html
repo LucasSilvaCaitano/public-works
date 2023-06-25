@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+          <ion-button routerLink="/tabs/home" routerDirection="forward">
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Finalizar Obra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item lines="inset">
+              <ion-label position="floating">Pesquisar pelo CEP</ion-label>   
+              <ion-input maxlength="9" type="text" #cep  [brmasker]="{mask:'00000-000', len:9}" inputmode="numeric"></ion-input>
+              <ion-button (click)="carregarObrasCep(cep.value);" color="orange" class="btn_pesquisar_obra" slot="end">Pesquisar</ion-button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+          
+      </ion-grid>
+      <ion-item  *ngFor="let obra of obras">
+        <ion-card class="card_denuncia">
+            <div class="div_info">
+      
+
+
+                <div class="div_desc_obra">
+                  <p class="desc_obra">Nome: {{obra.descricaoObra}}</p>
+                </div>
+                <div class="div_desc_obra">
+                  <p class="desc_obra">CEP: {{obra.cepObra}}</p>
+                </div>
+                <div class="div_desc_obra">
+                  <p class="desc_obra">Rua: {{obra.logradouroObra}}</p>
+                </div>
+                <div class="div_desc_obra">
+                  <p class="desc_obra">Bairro: {{obra.bairroObra}}</p>
+                </div>
+             
+            </div>
+          <div class="div_btn_denuncia">
+            <ion-button color="orange" (click)="registrarTermino(obra.idObra)" class="btn_denuncia">Registrar Término</ion-button>
+          </div>
+        </ion-card>
+      </ion-item>
+</ion-content>

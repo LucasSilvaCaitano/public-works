@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="titulo">
+      <div class="div_titulo">
+        <a (click)="logout()" class="a_sair"><ion-icon name="power"></ion-icon></a>
+        <p class="p_home">Home</p>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="full">
+    <ion-avatar slot="start">
+      <ion-img src="{{postPvdr.server}}img/fotosPerfil/{{foto}}"></ion-img>
+    </ion-avatar>
+    <ion-label class="menu_usu">
+      {{nome}}
+      <p  class="config_usuario"><a (click)="editarPerfil()">Configurações de perfil</a></p>
+    </ion-label>  
+  </ion-item>
+
+  <div class="div_card_acompanhar">
+    <ion-card class="card_btn_acompanhar_obra">
+        <ion-button color="orange" class="btn_acompanhar_obra" (click) = "acompanharObra()">
+          <div class="div_img_mapa_obra">
+            <img src="../../assets/icon/map.png" class="img_mapa_obra">
+          </div>
+          <p class="p_mapa"> Mapa das obras </p>
+        </ion-button>
+    </ion-card>
+  </div>
+
+  <div class="div_card_cadastrar">
+    <ion-card class="card_btn_cadastrar_obra">
+        <ion-button color="orange" class="btn_cadastrar_obra" (click) = "cadastrarObra()">
+          <div class="div_img_cadastrar_obra">
+            <img src="../../assets/icon/clipboard.png" class="img_cadastrar">
+          </div>
+          <p class="p_cadastrar"> Cadastrar </p> 
+        </ion-button>
+    </ion-card>
+  </div>
+
+  <div class="div_card_finalizar">
+    <ion-card class="card_btn_finalizar_obra" (click)="finalizar()">
+      <ion-button color="orange" class="btn_finalizar_obra">
+        <div class="div_img_finalizar_obra">
+          <img src="../../assets/icon/schedule.png" class="img_finalizar">
+        </div>
+        <p class="p_finalizar"> Finalizar </p>
+      </ion-button>
+    </ion-card>
+  </div>
+
+  <div class="div_card_denuncia">
+    <ion-card class="card_btn_denuncia_obra">
+      <ion-button color="orange" class="btn_denuncia_obra" (click) = "fazerDenuncia()">
+        <div class="div_img_denunciar_obra">
+          <img src="../../assets/icon/megaphone.png" class="img_denunciar">
+        </div>
+        <p class="p_denunciar"> Denunciar </p> 
+      </ion-button>
+    </ion-card>
+  </div>
+</ion-content>

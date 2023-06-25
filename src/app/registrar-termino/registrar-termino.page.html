@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+          <ion-button routerLink="/tabs/finalizer" routerDirection="forward">
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Registrar Término</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item lines="inset">
+              <ion-label position="stacked">Date de Término</ion-label>   
+              <ion-input maxlength="9" type="date" [(ngModel)]="dataTermino"></ion-input>
+              <ion-button (click)="registrarTermino()" color="orange" class="btn_pesquisar_obra" slot="end">Registrar Término</ion-button>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+          
+      </ion-grid>
+</ion-content>

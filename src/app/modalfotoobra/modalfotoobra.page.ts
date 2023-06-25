@@ -1,0 +1,92 @@
+import { Component, OnInit } from '@angular/core';
+import { Camera, CameraOptions } from '@ionic-native/Camera/ngx';
+import { ActionSheetController, ModalController } from '@ionic/angular';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+
+@Component({
+  selector: 'app-modalfotoobra',
+  templateUrl: './modalfotoobra.page.html',
+  styleUrls: ['./modalfotoobra.page.scss'],
+})
+export class ModalfotoobraPage implements OnInit {
+  fotosObra = [];
+  constructor(
+    private camera:Camera,
+    private actionSheetController: ActionSheetController,
+    private modal:ModalController,
+    private webView:WebView
+  ) { }
+
+  ngOnInit() {
+  }
+
+  async addFoto(){
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Pegar Imagem',
+      buttons: [{
+        text: 'Câmera',
+        icon: 'camera',
+        handler: () => {
+          
+          const options: CameraOptions = {
+            sourceType: this.camera.PictureSourceType.CAMERA,
+            correctOrientation:true,
+            allowEdit: true,
+            quality: 100,
+            destinationType: this.camera.DestinationType.FILE_URI,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+          }
+          
+          this.camera.getPicture(options).then(async (imageData) => {
+            this.fotosObra.push(imageData);
+          
+          }, (err) => {
+            console.log(err);
+          });
+        }
+      }, {
+        text: 'Galeria',
+        icon: 'image',
+        handler: () => {
+          const options: CameraOptions = {
+            sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
+            correctOrientation:true,
+            allowEdit: true,
+            quality: 100,
+            destinationType: this.camera.DestinationType.FILE_URI,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE
+          }
+          
+          this.camera.getPicture(options).then(async (imageData) => {
+            this.fotosObra.push(imageData);
+           // this.fotosObra.push(this.webView.convertFileSrc(imageData));
+          }, (err) => {
+            console.log(err);
+          });
+          
+        }
+      }, {
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+
+  delTodosFoto(){
+    this.fotosObra = []
+    
+  }
+  delFoto(i){
+    this.fotosObra.splice(i, 1)
+  }
+  fecharModal(){
+    this.modal.dismiss(this.fotosObra);
+  }
+  
+}

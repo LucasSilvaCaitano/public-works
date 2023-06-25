@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+          <ion-button routerLink="/tabs/mapa-obras" routerDirection="forward">
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Informações da Obra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-segment #seg scrollable (ionChange)="segChange(seg.value)">
+        <ion-segment-button value="informacoes" checked>
+          <ion-label>Informações</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="orgao">
+            <ion-label>Contatar Orgão</ion-label>
+          </ion-segment-button>
+      </ion-segment>
+      <ng-container [ngSwitch]="aba">
+          <ng-container *ngSwitchCase="'informacoes'">
+              <ion-slides pager="true" class="ion-padding">
+                  <ion-slide *ngFor="let img of imgs">
+                    <div>
+                      <img src="http://192.168.100.4:8080/publicworksServer/img/fotosObras/{{img.imagemObra}}">
+                    </div>
+                  </ion-slide>
+                </ion-slides>
+
+                <ion-grid>
+                    <ion-item>
+                  <ion-row>
+                    <ion-col>
+                      
+                        Nome da Obra: {{nome}}
+                      
+                  </ion-col>
+                  </ion-row>
+                  </ion-item>
+                  <ion-item>
+                  <ion-row>
+                      <ion-col>
+                      Custo Previsto: R$ {{custo}}
+                    </ion-col>
+                    </ion-row>
+                  </ion-item>
+                  <ion-item>
+                    <ion-row>
+                        <ion-col>
+                        Data de Início: {{dataInicio}}
+                      </ion-col>
+                      <ion-col>
+                          Data de Término: {{dataTermino}}
+                        </ion-col>
+                      </ion-row></ion-item>
+                </ion-grid>
+          </ng-container>
+        <ng-container *ngSwitchCase="'orgao'">
+            <ion-item>
+                <ion-label position="floating">Assunto</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+          <ion-item>
+            <ion-label position="floating">Mensagem</ion-label>
+            <ion-textarea rows="6" cols="20"></ion-textarea>
+          </ion-item>
+          <div class="centro">
+            <ion-button>Enviar</ion-button>
+        </div>
+          </ng-container>
+      </ng-container>
+    
+</ion-content>

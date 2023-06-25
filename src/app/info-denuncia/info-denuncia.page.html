@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+          <ion-button routerLink="/tabs/denuncias" routerDirection="forward">
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Detalhes da Denuncia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-item>
+      <ion-row>
+        <ion-col>
+          
+            Obra Denunciada: {{nomeObra}}
+          
+      </ion-col>
+      </ion-row>
+      </ion-item>
+      <ion-item>
+          <ion-row>
+            <ion-col>
+              
+                Data da Denúncia: {{dataDenuncia}}
+              
+          </ion-col>
+          </ion-row>
+          
+          </ion-item>
+          <ion-item>
+            <ion-row>
+              <ion-col>
+                
+                  Descrição: <p>{{descricaoDenuncia}}</p>
+                
+            </ion-col>
+            </ion-row>
+            
+          </ion-item>
+          <ion-item>
+            <ion-row>
+              <ion-col>
+                
+                  Status: {{status}}
+                
+            </ion-col>
+            </ion-row>
+          </ion-item>
+          <ng-container *ngIf="resposta!=null">
+          <ion-item>
+            <ion-row>
+              <ion-col>
+                
+                  Resposta: <p>{{resposta}}</p>
+                
+            </ion-col>
+            </ion-row>
+            
+          </ion-item>
+        </ng-container>
+    <!--  <ion-item>
+       <ion-row>
+          <ion-col>
+         Custo Previsto: R$ {{custo}}
+        </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+            <ion-col>
+            Data de Início: {{dataInicio}}
+          </ion-col>
+          <ion-col>
+              Data de Término: {{dataTermino}}
+            </ion-col>
+          </ion-row></ion-item>-->
+    </ion-grid>
+</ion-content>

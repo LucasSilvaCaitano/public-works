@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Historico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+ 
+ 
+        <ion-list>
+      <!-- {{obrasDivulgadas.length}}-->
+          <ion-item *ngFor="let obra of obrasDivulgadas; let i = index" (click)="verInfoObra(i)">
+            {{obra.descricaoObra}}
+              
+          </ion-item>
+        </ion-list>
+        <h3 *ngIf="obrasDivulgadas.length==0">Nenhuma obra divulgada</h3>
+  
+    
+</ion-content>

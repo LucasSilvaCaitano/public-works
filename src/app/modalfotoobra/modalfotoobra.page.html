@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Adicionar fotos da obra</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fecharModal()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+            <ion-button (click)="addFoto()">Adicionar</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button (click)="delTodosFoto()" color="danger">Deletar Todas</ion-button>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+
+
+  <ion-list>
+    
+    <ion-item *ngFor="let img of fotosObra; let i = index">
+      <img src="{{webView.convertFileSrc(img)}}" width="100px" height="100px">
+      <ion-button slot="end" color="danger" (click)="delFoto(i)"><ion-icon name="trash"></ion-icon></ion-button>
+      </ion-item>
+    </ion-list>
+</ion-content>
